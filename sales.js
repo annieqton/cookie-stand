@@ -1,10 +1,10 @@
 'use strict';
 
-var hourOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var hourOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 //First and Pine Location
 var firstAndPike = {
-
+  locationName : 'First and Pike',
   minCustPerHour : 23,
   maxCustPerHour : 65,
   avgCookiesPerCust : 6.3,
@@ -20,10 +20,10 @@ var firstAndPike = {
 
   calcCookiesSoldPerHour : function () {
     for (var i = 0; i < this.randCustPerHourArray.length; i++) {
-      var cookiesSoldPerHour = Math.floor(this.randCustPerHourArray[i] * this.avgCookiesPerCust); //average per hour cookies sold
+      var cookiesSoldPerHour = Math.ceil(this.randCustPerHourArray[i] * this.avgCookiesPerCust); //average per hour cookies sold.  use math.ceil to round up the number of cookiesSoldPerHour
       this.cookiesSoldPerHourArray.push(cookiesSoldPerHour);
-      console.log(this.cookiesSoldPerHourArray);
     }
+    console.log(this.cookiesSoldPerHourArray);
   },
 
   getTotal : function () {
@@ -47,14 +47,14 @@ for (var i = 0; i <= hourOfDay.length; i++){
   cookiesSoldList.appendChild(liEl);
 }
 
-var cookiesSoldTotal = document.getElementById('totalFirstAndPike');
-liEl.textContent = 'Total Sales: ' + firstAndPike.getTotal() + ' cookies per day.';
+var cookiesSoldTotal = document.getElementById('firstAndPike');
+liEl.textContent = 'Total: ' + firstAndPike.getTotal() + ' cookies per day.';
 cookiesSoldTotal.appendChild(liEl);
 
 
 //Seatac Airport Location
 var seatac = {
-
+  locationName : 'Seatac',
   minCustPerHour : 3,
   maxCustPerHour : 24,
   avgCookiesPerCust : 1.2,
@@ -97,14 +97,14 @@ for (i = 0; i <= hourOfDay.length; i++){
   cookiesSoldList.appendChild(liEl);
 }
 
-cookiesSoldTotal = document.getElementById('totalSeatac');
-liEl.textContent = 'Total Sales: ' + seatac.getTotal() + ' cookies per day.';
+cookiesSoldTotal = document.getElementById('seatac');
+liEl.textContent = 'Total: ' + seatac.getTotal() + ' cookies per day.';
 cookiesSoldTotal.appendChild(liEl);
 
 
 //Capitol Hill Location
 var capitolHill = {
-
+  locationName : 'Capitol Hill',
   minCustPerHour : 20,
   maxCustPerHour : 38,
   avgCookiesPerCust : 3.7,
@@ -148,14 +148,14 @@ for (i = 0; i <= hourOfDay.length; i++){
   cookiesSoldList.appendChild(liEl);
 }
 
-cookiesSoldTotal = document.getElementById('totalCapitolHill');
-liEl.textContent = 'Total Sales: ' + capitolHill.getTotal() + ' cookies per day.';
+cookiesSoldTotal = document.getElementById('capitolHill');
+liEl.textContent = 'Total: ' + capitolHill.getTotal() + ' cookies per day.';
 cookiesSoldTotal.appendChild(liEl);
 
 
 //Seattle Center Location
 var seattleCenter= {
-
+  locationName : 'Seattle Center',
   minCustPerHour : 3,
   maxCustPerHour : 24,
   avgCookiesPerCust : 1.2,
@@ -199,14 +199,14 @@ for (i = 0; i <= hourOfDay.length; i++){
   cookiesSoldList.appendChild(liEl);
 }
 
-cookiesSoldTotal = document.getElementById('totalSeattleCenter');
-liEl.textContent = 'Total Sales: ' + seattleCenter.getTotal() + ' cookies per day.';
+cookiesSoldTotal = document.getElementById('seattleCenter');
+liEl.textContent = 'Total: ' + seattleCenter.getTotal() + ' cookies per day.';
 cookiesSoldTotal.appendChild(liEl);
 
 
 //Alki Location
 var alki= {
-
+  locationName : 'Alki',
   minCustPerHour : 2,
   maxCustPerHour : 16,
   avgCookiesPerCust : 4.6,
@@ -250,6 +250,6 @@ for (i = 0; i <= hourOfDay.length; i++){
   cookiesSoldList.appendChild(liEl);
 }
 
-cookiesSoldTotal = document.getElementById('totalAlki');
-liEl.textContent = 'Total Sales: ' + alki.getTotal() + ' cookies per day.';
+cookiesSoldTotal = document.getElementById('Alki');
+liEl.textContent = 'Total: ' + alki.getTotal() + ' cookies per day.';
 cookiesSoldTotal.appendChild(liEl);
