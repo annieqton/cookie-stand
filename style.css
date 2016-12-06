@@ -1,0 +1,15 @@
+*{
+font-family: Arial, Verdana, Helvetica;
+background-color: white;
+color: black;
+font-size: 12px;
+}
+
+#storeLocation {
+text-decoration: underline;
+}
+
+#title {
+  color: blue;
+  font-size: 14px;
+}
