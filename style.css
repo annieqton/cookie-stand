@@ -1,18 +1,25 @@
 *{
 font-family: Arial, Verdana, Helvetica;
-background-color: white;
 color: black;
 font-size: 12px;
+border: 1px gray;
+}
+
+h1 {
+	font-size: 20px;
+}
+table {
+	border-style: solid;
 }
 
 td {
-	padding: 15px;*/
-	/*border-radius: 15px;*/
-  border-color: gray;
-  /*border-style: solid;*/
+	padding: 15px;
+}
+
+tr {
+background-color: #f4f5f7;
 }
 
 th {
-	background-color: gray;
-	color: white;
+font-weight: bold;
 }
