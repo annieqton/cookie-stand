@@ -4,7 +4,7 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 var storeTable = document.getElementById('storejs');
 var allStores = [];
 var totalSalesArray = [];
-var totalStoreDailySoldArray = [];
+var totalCookiesSoldAllLocations = 0;
 
 function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
   this.locationName = locationName;
@@ -23,16 +23,13 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
     }
   };
 
-  // //console.log((Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour));
-  // this.calcRandomCustPerHour()
-  // console.log(this.randCustPerHourArray)
-
   this.calcCookiesSoldPerHour = function() {
     this.calcRandomCustPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.cookiesSoldPerHourArray.push(Math.ceil(this.randCustPerHourArray[i] * this.avgCookiesPerCust)); //average per hour cookies sold.  use math.ceil to round up the number of cookiesSoldPerHour
       this.totalDailyCookiesSales += this.cookiesSoldPerHourArray[i];
     }
+    totalCookiesSoldAllLocations +=this.totalDailyCookiesSales;
   };
 
   this.render = function() {
@@ -48,8 +45,11 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
       tableData.textContent = this.cookiesSoldPerHourArray[i];
       tableRow.appendChild(tableData);
     }
-    storeTable.appendChild(tableRow);
 
+    tableData = document.createElement('td');
+    tableData.textContent = this.totalDailyCookiesSales;
+    tableRow.appendChild(tableData);
+    storeTable.appendChild(tableRow);
   };
   this.render();
 }
@@ -57,16 +57,23 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
 
 
 function storeTablesJS() {
-
+//this is the header row that displays the hour across the top
   function makeHeaderRow() {
     var tableRow = document.createElement('tr');
-    tableRow.textContent = '_';
 
-    for (var i = 0; i < hours.length; i++){
-      var tableHead = document.createElement('th');
-      tableHead.textContent = hours[i];
-      tableRow.appendChild(tableHead);
+    var headerCell = document.createElement('th');
+    headerCell.textContent = 'Locations';
+    tableRow.appendChild(headerCell); // <<<<<<<
+
+    for (var i = 0; i < hours.length; i++) {
+      headerCell = document.createElement('th');
+      headerCell.textContent = hours[i];
+      tableRow.appendChild(headerCell);
     }
+
+    var totalDailyCell = document.createElement('th');
+    totalDailyCell.textContent = 'Daily Location Total';
+    tableRow.appendChild(totalDailyCell);
     storeTable.appendChild(tableRow);
   }
   makeHeaderRow();
@@ -77,6 +84,7 @@ function storeTablesJS() {
   new Store('Seattle Center', 11, 38, 2.3);
   new Store('Alki', 2, 16, 4.6);
 
+// this calculate the cookies sales per hour for all stores
   for (var i = 0; i < hours.length; i++) {
     var totalSalesPerHour = 0;
     for (var j = 0; j < allStores.length; j++) {
@@ -85,29 +93,29 @@ function storeTablesJS() {
     totalSalesArray.push(totalSalesPerHour);
   }
 
-  // for (i = 0; i < allStores.length; i++) {
-  //   var totalSalesPerStore = 0;
-  //   for (j = 0; j < hours.length; j++) {
-  //     totalSalesPerStore += hours[j].totalDailyCookiesSales[i];
-  //   }
-  //   totalStoreDailySoldArray.push(totalSalesPerStore);
-  // }
-  // console.log(totalSalesPerStore);
 
+  // this is the footer row that gives the tally of cookies sales per hour for all stores
   function makeFooterRow() {
     var tableRow = document.createElement('tr');
-    tableRow.textContent = 'Total Sales';
+
+    var footerCell = document.createElement('th');
+    footerCell.textContent = 'Total';
+    tableRow.appendChild(footerCell); // <<<<<<<
 
     for (var i = 0; i < hours.length; i++){
-      var tableFoot = document.createElement('th');
-      tableFoot.textContent = totalSalesArray[i];
-      tableRow.appendChild(tableFoot);
+      footerCell = document.createElement('th');
+      footerCell.textContent = totalSalesArray[i];
+      tableRow.appendChild(footerCell);
     }
+    footerCell = document.createElement('th');
+    footerCell.textContent = totalCookiesSoldAllLocations;
+    tableRow.appendChild(footerCell);
+
     storeTable.appendChild(tableRow);
   }
   makeFooterRow();
-}
 
+}
 storeTablesJS();
 
 
