@@ -1,7 +1,7 @@
 'use strict';
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var storeTable = document.getElementById('storejs');
+var storeTable = document.getElementById('store_data');
 var allStores = [];
 var totalSalesArray = [];
 var totalCookiesSoldAllLocations = 0;
@@ -52,7 +52,15 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
     storeTable.appendChild(tableRow);
   };
   this.render();
+
 }
+
+// function renderAllStores() {
+//   for (var i = 0; i < allStores.length; i++) {
+//     allStores[i].render[i];
+//   }
+// }
+// renderAllStores();
 
 
 
@@ -84,7 +92,7 @@ function storeTablesJS() {
   new Store('Seattle Center', 11, 38, 2.3);
   new Store('Alki', 2, 16, 4.6);
 
-// this calculate the cookies sales per hour for all stores
+  // this calculate the cookies sales per hour for all stores
   for (var i = 0; i < hours.length; i++) {
     var totalSalesPerHour = 0;
     for (var j = 0; j < allStores.length; j++) {
@@ -117,6 +125,7 @@ function storeTablesJS() {
 
 }
 storeTablesJS();
+
 
 
 

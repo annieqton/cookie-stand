@@ -11,10 +11,34 @@
 
   <body>
 
-      <h1>Cookies Needed By Location Each Day</h1>
-      <br>
+    <h1>Pat's Salmon Cookies Shop</h1>
+    <br>
 
-      <table id = "storejs"></table>
+    <section class="logo"><img src="" alt=""></section>
+    <section>
+      <form id="new-location">
+        <fieldset>
+          <legend class="input">Update New Cookie Store</legend>
+
+            <label for="location">Name:</label>
+            <input id="location" type="text" name="store" placeholder="Location Name">
+
+            <label for="min">Min. # of Cust:</label>
+            <input id="min" type="number" name="min" placeholder="Min. Custtomer">
+
+            <label for="max">Max. # of Cust:</label>
+            <input id="max" type="number" name="max" placeholder="Max. Customer">
+
+            <label for="avg">Avg. Cookies per Cust:</label>
+            <input id="avg" type="number" name="avg" placeholder="Average Cookies">
+
+            <button id="submit" type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <br>
+      <table id = "store_data"></table>
       <script src="sales.js"></script>
 
   </body>

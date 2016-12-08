@@ -23,3 +23,13 @@ background-color: #f4f5f7;
 th {
 font-weight: bold;
 }
+
+#location, #min, #max, #avg {
+	border-style: solid;
+	border-color: #cacdd1;
+	background-color: #e8ebef;
+}
+
+.input {
+	font-weight: bold;
+}
