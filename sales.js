@@ -7,7 +7,7 @@ var hourlyTotal = [];
 var totalCookiesSoldAllLocations = 0;
 var inputForm = document.getElementById('new-location');
 
-//-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
   this.locationName = locationName;
   this.minCustPerHour = minCustPerHour;
@@ -32,7 +32,8 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
       this.totalDailyCookiesSales += this.cookiesSoldPerHourArray[i];
     }
     totalCookiesSoldAllLocations +=this.totalDailyCookiesSales;
-  }
+  };
+
 
   this.render = function() {
     this.calcCookiesSoldPerHour();
@@ -88,15 +89,17 @@ function makeHeaderRow() {
 
 // ----------------------------------------------------------------------------
 
-  // this calculate the cookies sales per hour for all stores
-for (var i = 0; i < hours.length; i++) {
-  var totalSalesPerHour = 0;
-  for (var j = 0; j < allStores.length; j++) {
-    totalSalesPerHour += allStores[j].cookiesSoldPerHourArray[i];
+  // this calculates the cookies sales per hour for all stores
+function tallyAllStoreSalesPerHour() {
+  hourlyTotal = [];
+  for (var i = 0; i < hours.length; i++) {
+    var totalSalesPerHour = 0;
+    for (var j = 0; j < allStores.length; j++) {
+      totalSalesPerHour += allStores[j].cookiesSoldPerHourArray[i];
+    }
+    hourlyTotal.push(totalSalesPerHour);
   }
-  hourlyTotal.push(totalSalesPerHour);
 }
-
 // ----------------------------------------------------------------------------
 
   // this is the footer row that gives the tally of cookies sales per hour for all stores
@@ -152,6 +155,9 @@ function handleInputSubmit(event) {
 // this is to clean the old table
   storeTable.innerHTML = '';
 
+  // Tally all stores
+  tallyAllStoreSalesPerHour();
+
 // these are to call the funtions to populate the table with new data
   makeHeaderRow();
   renderAllStores();
@@ -165,6 +171,9 @@ new Store('Seatac Airport', 3, 24, 1.2);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Seattle Center', 11, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
+
+// Tally all stores
+tallyAllStoreSalesPerHour();
 
 // the order to function called matters
 makeHeaderRow();
