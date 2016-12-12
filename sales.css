@@ -28,15 +28,14 @@ font-weight: bold;
 	border-style: solid;
 	border-color: #cacdd1;
 	background-color: #e8ebef;
-}
-
-.input {
 	font-weight: bold;
 }
 
-*{
+/*.input {
+	font-weight: bold;
+}*/
 
-/*background: <img src="image/07-background-cookies.jpg">*/
+*{
 font-family: 'Droid Sans', sans-serif;
 }
 
